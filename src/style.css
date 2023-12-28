@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    overflow: hidden;
+}
+
+body {
+    background-color: black;
+}
+
+.index {
+    position: absolute;
+    color: black;
+    z-index: 1;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    text-align: center;
+    font-family: monospace;
+    font-size: 26px;
+}
+
+.planet {
+    border: solid black 2px;
+    padding: 10px;
+    background-color: white;
+    cursor: pointer;
+    transition: 0.5s;
+    border-radius: 5px;
+}
+
+.planet:hover {
+    background-color: rgba(193, 201, 147, 0.918);
+}
