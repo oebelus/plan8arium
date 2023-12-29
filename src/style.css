@@ -4,12 +4,12 @@
 }
 
 body {
-    background-color: black;
+    background-image: url("https://i.imgur.com/IEBsfcF.jpg");
 }
 
 .index {
     position: absolute;
-    color: black;
+    color: white;
     z-index: 1;
     top: 10px;
     left: 10px;
@@ -22,9 +22,9 @@ body {
 }
 
 .planet {
-    border: solid black 2px;
+    border: solid #8C8273 2px;
     padding: 10px;
-    background-color: white;
+    background-color: #181A1B;
     cursor: pointer;
     transition: 0.5s;
     border-radius: 5px;
@@ -32,4 +32,18 @@ body {
 
 .planet:hover {
     background-color: rgba(193, 201, 147, 0.918);
+}
+
+.dinosaur {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 10%;
+    height: 20%;
+}
+
+.tojump {
+    position: absolute;
+    background-color: white;
+    right: 0;
 }
