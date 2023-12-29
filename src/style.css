@@ -24,7 +24,7 @@ body {
 .planet {
     border: solid #8C8273 2px;
     padding: 10px;
-    background-color: #181A1B;
+    background-color: #181a1b86;
     cursor: pointer;
     transition: 0.5s;
     border-radius: 5px;
@@ -36,14 +36,73 @@ body {
 
 .dinosaur {
     position: absolute;
-    bottom: 20%;
-    right: 5%;
-    width: 10%;
-    height: 20%;
+    top: 7%;
+    right: 2%;
+    width: 14%;
+    height: 30%;
 }
 
 .tojump {
     position: absolute;
     background-color: white;
     right: 0;
+}
+
+.float, .gravity {
+    position: absolute;
+    right: 17%;
+    bottom: 2%;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    font-size: 16px;
+    z-index: 1;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.float {
+    bottom: 10%;
+}
+
+.planetname {
+    position: absolute;
+    right: 21%;
+    bottom: 5%;
+    background-color: #000000;
+    padding: 10px;
+    color: white;
+    font-family: monospace;
+    border-radius: 10px;
+    font-size: 20px;
+    border: 2px solid white;
+}
+
+.card {
+    position: absolute;
+    top: 0;
+    right: 26%;
+    top: 10%;
+    color: white;
+}
+
+.data {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-style: italic;
+    font-size: 20px;
+    background-color: rgb(2, 0, 0);
+    padding: 10px 20px 10px 20px;
+    border-radius: 10px;
+    border: 2px white solid;
+    font-family: monospace;
+}
+
+.title {
+    top: 0;
+    color: white;
+    margin-bottom: 10px;
+    font-size: 50px;
+    margin-left: 15px;
 }

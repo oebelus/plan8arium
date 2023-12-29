@@ -1,4 +1,5 @@
 import * as THREE from 'three'
+import celestialBodies from './data.ts'
 
 var planet: string = "earth";
 
@@ -12,17 +13,30 @@ var jupiterbtn = document.querySelector(".jupiter")
 var saturnbtn = document.querySelector(".saturn")
 var uranusbtn = document.querySelector(".uranus")
 var neptunebtn = document.querySelector(".neptune")
+var planetname = document.querySelector(".planetname")
+
+if (planetname)
+  planetname.innerHTML = "○ Test gravity here"
+
+var title = document.querySelector(".title")
+var type = document.querySelector(".type")
+var diameter = document.querySelector(".diameter")
+var gravity = document.querySelector(".gravityc")
+var orbitalPeriod = document.querySelector(".orbitalPeriod")
+var meanTemperature = document.querySelector(".meanTemperature")
+
+function htmlelements(): void {
+  if (title) title.innerHTML = "►" + planet[0].toUpperCase() + planet.slice(1, planet.length)
+  if (type) type.innerHTML = "<b>Type: </b>" + celestialBodies[planet]["type"]
+  if (diameter) diameter.innerHTML = "<b>Diameter: </b>" + celestialBodies[planet]["diameter"]
+  if (gravity) gravity.innerHTML = "<b>Gravity: </b>" + celestialBodies[planet]["gravity"]
+  if (orbitalPeriod) orbitalPeriod.innerHTML = "<b>Period: </b>" + celestialBodies[planet]["orbitalPeriod"]
+  if (meanTemperature) meanTemperature.innerHTML = "<b>Temperature: </b>" + celestialBodies[planet]["meanTemperature"]
+}
 
 var dinosaur = document.querySelector(".dinosaur") as HTMLElement
-var velocity = 0;
 
-window.addEventListener("keydown", function(event) {
-  if (event.code === "Space") {
-    velocity = +8;
-  }
-});
-
-function toPlanet(planetName: string) {
+function toPlanet(planetName: string) { 
   planet = planetName
 }
 
@@ -66,19 +80,6 @@ if (neptunebtn) {
   neptunebtn.addEventListener("click", function() { toPlanet("neptune"); });
 }
 
-var gravity: Record<string, number> = {
-  "sun": 274,
-  "earth": 9.807,
-  "moon": 1.62,
-  "mercury": 3.7,
-  "venus": 8.87,
-  "uranus": 8.87,
-  "mars": 3.71,
-  "jupiter": 24.79,
-  "saturn": 10.44,
-  "neptune": 11.15
-}
-
 var sunRadius: number = 25
 var earthRadius: number = 20
 
@@ -108,7 +109,6 @@ class Planet {
 
     const textureLoader = new THREE.TextureLoader();
     const texture = textureLoader.load(texturePath); 
-
     this.material = new THREE.MeshStandardMaterial({ map: texture });
 
     this.element = new THREE.Mesh(this.geometry, this.material)
@@ -127,24 +127,45 @@ class Planet {
   }
 }
 
-const geometry = new THREE.CylinderGeometry(7, 7, 8, 32); 
-const material = new THREE.MeshToonMaterial( {color: "white"} ); 
-const cylinder = new THREE.Mesh(geometry, material);
-cylinder.position.x = 50
-cylinder.position.y = -20
-scene.add(cylinder)
+class Surface {
+  x: number
+  y: number 
+  element: any
+  constructor(x: number, y: number) {
+    this.x = x
+    this.y = y
+    const geometry = new THREE.CylinderGeometry(7, 7, 8, 5, 2); 
+    const textureLoader = new THREE.TextureLoader();
+    const texture = textureLoader.load("https://i.imgur.com/aOfHrpV.jpg"); 
+    const material = new THREE.MeshStandardMaterial({ map: texture });
+    this.element = new THREE.Mesh(geometry, material);
+
+    this.element.position.x = x
+    this.element.position.y = y
+  }
+
+  draw() {
+    scene.add(this.element)
+    console.log(this.element.x)
+  }
+}
+
+let ground = new Surface(45, -26);
+let roof = new Surface(60, -26)
+ground.draw()
+roof.draw()
 
 let data: Record<string, (string|number)[]> = {
-  "sun": ["https://i.imgur.com/NT8Vd4p.jpg", "https://i.imgur.com/Aaw4ZQg.jpg", 274],
-  "mercury": ["https://i.imgur.com/UQQRIZg.jpg", "https://i.imgur.com/6vSGiEh.jpg", 3.7],
-  "venus": ["https://i.imgur.com/Wa8lpF6.jpg", "https://i.imgur.com/EMRrrJf.jpg", 8.87],
-  "earth": ["https://i.imgur.com/Tajyxwl.jpg", "https://i.imgur.com/TCYbtkn.jpg", 9.807],
-  "moon": ["https://i.imgur.com/OjvY5Pv.jpg", "https://i.imgur.com/oPo9Xei.jpg", 1.62],
-  "mars": ["https://i.imgur.com/U2QZveA.jpg", "https://i.imgur.com/1FPwMdk.jpg", 3.71],
-  "jupiter": ["https://i.imgur.com/ZUVwSv5.jpg", "https://i.imgur.com/qzVIeVy.jpg", 24.79],
-  "saturn": ["https://i.imgur.com/ITtPqGy.jpg", "https://i.imgur.com/YlJf4Hs.jpg", 10.44],
-  "uranus": ["https://i.imgur.com/wj611Q1.jpg", "https://i.imgur.com/wj611Q1.jpg", 8.87],
-  "neptune": ["https://i.imgur.com/KU2X0rf.jpg", "https://i.imgur.com/KU2X0rf.jpg", 11.15]
+  "sun": ["https://i.imgur.com/NT8Vd4p.jpg", 274],
+  "mercury": ["https://i.imgur.com/UQQRIZg.jpg", 3.7],
+  "venus": ["https://i.imgur.com/Wa8lpF6.jpg", 8.87],
+  "earth": ["https://i.imgur.com/Tajyxwl.jpg", 9.807],
+  "moon": ["https://i.imgur.com/OjvY5Pv.jpg", 1.62],
+  "mars": ["https://i.imgur.com/U2QZveA.jpg", 3.71],
+  "jupiter": ["https://i.imgur.com/ZUVwSv5.jpg", 24.79],
+  "saturn": ["https://i.imgur.com/ITtPqGy.jpg", 10.44],
+  "uranus": ["https://i.imgur.com/wj611Q1.jpg", 8.87],
+  "neptune": ["https://i.imgur.com/KU2X0rf.jpg", 11.15]
 }
 
 let sun = new Planet(sunRadius, data["sun"][0] as string);
@@ -157,6 +178,15 @@ let jupiter = new Planet(sunRadius, data["jupiter"][0] as string)
 let saturn = new Planet(sunRadius, data["saturn"][0] as string)
 let uranus = new Planet(earthRadius, data["uranus"][0] as string)
 let neptune = new Planet(earthRadius, data["neptune"][0] as string)
+
+/*const geometry = new THREE.RingGeometry( sunRadius * 2, sunRadius * 2, 32 ); 
+const textureLoader = new THREE.TextureLoader();
+const texture = textureLoader.load("https://i.imgur.com/wQvlmId.png"); 
+const material = new THREE.MeshStandardMaterial({ map: texture });
+const ring = new THREE.Mesh( geometry, material );
+
+saturn.element.add(ring)
+*/
 
 let planets:Record<string, Planet> = {
   "sun": sun,
@@ -175,30 +205,50 @@ const light = new THREE.DirectionalLight(0xFFFFFF, 1)
 light.position.set(2, 1, 4)
 scene.add(light)
 
-var currentPlanet: Planet;
+// Astronaut
+var velocity = 0;
+
+const floatbtn = document.querySelector(".float")
+const gravitybtn = document.querySelector(".gravity")
+
+if (floatbtn) {
+  floatbtn.addEventListener("click", function() {
+    velocity = -3
+  })
+}
+
+if (gravitybtn) {
+  gravitybtn.addEventListener("click", function() {
+    dinosaur.style.bottom = "5%"
+    velocity = data[planet][1] as number / 3;
+  })
+}
+
+var currentPlanet: Planet; 
 
 function animate() {
   requestAnimationFrame(animate)
   
-  velocity -= (gravity[planet] / 15);
   if (dinosaur) {
-    var bottom: number = (parseFloat(dinosaur.style.bottom) || 0)
-    dinosaur.style.bottom = (bottom + velocity) + "%";
-    if (bottom + velocity < 20) {
-      dinosaur.style.bottom = 20 + "%";
-    } else if (bottom + velocity > 85) {
-      velocity = 0
-      dinosaur.style.bottom = "85%";
-    }
+    var top: number = (parseFloat(dinosaur.style.top) || 0);
+    dinosaur.style.top = (top + velocity) + "%";
+    if (top + velocity < 7) {
+      dinosaur.style.top = "7%";
+    } else if (top + velocity > 60) {
+      velocity = 0;
+      dinosaur.style.top = "60%";
+    } 
   }
     
   if (currentPlanet)
     currentPlanet.remove()
 
   currentPlanet = planets[planet];
-    
+  
+  htmlelements()
+
   if (currentPlanet) 
-    currentPlanet.draw()
+    currentPlanet.draw() 
     
   renderer.render(scene, mainCamera)
 }
