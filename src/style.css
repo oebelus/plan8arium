@@ -36,8 +36,8 @@ body {
 
 .dinosaur {
     position: absolute;
-    bottom: 0;
-    right: 0;
+    bottom: 20%;
+    right: 5%;
     width: 10%;
     height: 20%;
 }

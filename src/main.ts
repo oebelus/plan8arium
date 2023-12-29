@@ -15,15 +15,15 @@ var neptunebtn = document.querySelector(".neptune")
 
 var dinosaur = document.querySelector(".dinosaur") as HTMLElement
 var velocity = 0;
+
 window.addEventListener("keydown", function(event) {
   if (event.code === "Space") {
-    velocity = +20;
+    velocity = +8;
   }
 });
 
 function toPlanet(planetName: string) {
   planet = planetName
-  //cylinder.updateGravity()
 }
 
 if (sunbtn) {
@@ -127,29 +127,36 @@ class Planet {
   }
 }
 
-let textured: Record<string, string> = {
-  "sun": "https://i.imgur.com/NT8Vd4p.jpg",
-  "mercury": "https://i.imgur.com/UQQRIZg.jpg",
-  "venus": "https://i.imgur.com/Wa8lpF6.jpg",
-  "earth": "https://i.imgur.com/Tajyxwl.jpg",
-  "moon": "https://i.imgur.com/OjvY5Pv.jpg",
-  "mars": "https://i.imgur.com/U2QZveA.jpg",
-  "jupiter": "https://i.imgur.com/ZUVwSv5.jpg",
-  "saturn": "https://i.imgur.com/ITtPqGy.jpg",
-  "uranus": "https://i.imgur.com/wj611Q1.jpg",
-  "neptune": "https://i.imgur.com/KU2X0rf.jpg"
+const geometry = new THREE.CylinderGeometry(7, 7, 8, 32); 
+const material = new THREE.MeshToonMaterial( {color: "white"} ); 
+const cylinder = new THREE.Mesh(geometry, material);
+cylinder.position.x = 50
+cylinder.position.y = -20
+scene.add(cylinder)
+
+let data: Record<string, (string|number)[]> = {
+  "sun": ["https://i.imgur.com/NT8Vd4p.jpg", "https://i.imgur.com/Aaw4ZQg.jpg", 274],
+  "mercury": ["https://i.imgur.com/UQQRIZg.jpg", "https://i.imgur.com/6vSGiEh.jpg", 3.7],
+  "venus": ["https://i.imgur.com/Wa8lpF6.jpg", "https://i.imgur.com/EMRrrJf.jpg", 8.87],
+  "earth": ["https://i.imgur.com/Tajyxwl.jpg", "https://i.imgur.com/TCYbtkn.jpg", 9.807],
+  "moon": ["https://i.imgur.com/OjvY5Pv.jpg", "https://i.imgur.com/oPo9Xei.jpg", 1.62],
+  "mars": ["https://i.imgur.com/U2QZveA.jpg", "https://i.imgur.com/1FPwMdk.jpg", 3.71],
+  "jupiter": ["https://i.imgur.com/ZUVwSv5.jpg", "https://i.imgur.com/qzVIeVy.jpg", 24.79],
+  "saturn": ["https://i.imgur.com/ITtPqGy.jpg", "https://i.imgur.com/YlJf4Hs.jpg", 10.44],
+  "uranus": ["https://i.imgur.com/wj611Q1.jpg", "https://i.imgur.com/wj611Q1.jpg", 8.87],
+  "neptune": ["https://i.imgur.com/KU2X0rf.jpg", "https://i.imgur.com/KU2X0rf.jpg", 11.15]
 }
 
-let sun = new Planet(sunRadius, textured["sun"]);
-let mercury = new Planet(earthRadius, textured["mercury"])
-let earth = new Planet(earthRadius, textured["earth"])
-let moon = new Planet(earthRadius - 5, textured["moon"])
-let venus = new Planet(earthRadius, textured["venus"])
-let mars = new Planet(earthRadius, textured["mars"])
-let jupiter = new Planet(sunRadius, textured["jupiter"])
-let saturn = new Planet(sunRadius, textured["saturn"])
-let uranus = new Planet(earthRadius, textured["uranus"])
-let neptune = new Planet(earthRadius, textured["neptune"])
+let sun = new Planet(sunRadius, data["sun"][0] as string);
+let mercury = new Planet(earthRadius, data["mercury"][0] as string)
+let earth = new Planet(earthRadius, data["earth"][0] as string)
+let moon = new Planet(earthRadius - 5, data["moon"][0] as string)
+let venus = new Planet(earthRadius, data["venus"][0] as string)
+let mars = new Planet(earthRadius, data["mars"][0] as string)
+let jupiter = new Planet(sunRadius, data["jupiter"][0] as string)
+let saturn = new Planet(sunRadius, data["saturn"][0] as string)
+let uranus = new Planet(earthRadius, data["uranus"][0] as string)
+let neptune = new Planet(earthRadius, data["neptune"][0] as string)
 
 let planets:Record<string, Planet> = {
   "sun": sun,
@@ -168,23 +175,20 @@ const light = new THREE.DirectionalLight(0xFFFFFF, 1)
 light.position.set(2, 1, 4)
 scene.add(light)
 
-const geometry = new THREE.CircleGeometry( 5, 32 ); 
-const textureLoader = new THREE.TextureLoader();
-const texture = textureLoader.load("texturePath"); 
-const material = new THREE.MeshStandardMaterial({ map: texture });
-const circle = new THREE.Mesh(geometry, material); 
-scene.add(circle)
-
 var currentPlanet: Planet;
 
 function animate() {
   requestAnimationFrame(animate)
-  //cylinder.update()
-  velocity -= (gravity[planet] / 7);
+  
+  velocity -= (gravity[planet] / 15);
   if (dinosaur) {
-    dinosaur.style.bottom = (parseFloat(dinosaur.style.bottom) || 0) + velocity + "px";
-    if (dinosaur.style.bottom < 0 + "px") {
-      dinosaur.style.bottom = 10 + "px";
+    var bottom: number = (parseFloat(dinosaur.style.bottom) || 0)
+    dinosaur.style.bottom = (bottom + velocity) + "%";
+    if (bottom + velocity < 20) {
+      dinosaur.style.bottom = 20 + "%";
+    } else if (bottom + velocity > 85) {
+      velocity = 0
+      dinosaur.style.bottom = "85%";
     }
   }
     
@@ -193,9 +197,9 @@ function animate() {
 
   currentPlanet = planets[planet];
     
-  if (currentPlanet)
+  if (currentPlanet) 
     currentPlanet.draw()
-
+    
   renderer.render(scene, mainCamera)
 }
 
