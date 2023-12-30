@@ -55,8 +55,8 @@ body {
 
 .float, .gravity {
     position: absolute;
-    right: 16.5%;
-    bottom: 0%;
+    right: 17.5%;
+    bottom: 0.8%;
     padding: 5px;
     background-color: rgba(255, 255, 255, 0);
     color: white;
@@ -68,13 +68,13 @@ body {
 }
 
 .float {
-    bottom: 3%;
+    bottom: 3.6%;
 }
 
 .planetname {
     position: absolute;
-    right: 1%;
-    bottom: 1%;
+    right: 20%;
+    bottom: 2%;
     background-color: #000000;
     padding: 8px 10px 8px 10px;
     color: rgba(255, 255, 255, 0.74);
@@ -86,22 +86,23 @@ body {
 
 .card {
     position: absolute;
-    top: 30% !important;
-    right: 25%;
-    top: 10%;
+    top: 16% !important;
+    right: 20%;
     color: white;
 }
 
 .data {
     display: flex;
     flex-direction: column;
-    border-radius: 5px;
+    border-radius: 20px;
     gap: 7px;
     font-size: 20px;
     background-color: rgba(2, 0, 0, 0.719);
-    padding: 10px 40px 10px 20px;
+    padding: 15px 40px 15px 20px;
     border: 2px rgba(255, 255, 255, 0.315) solid;
     font-family: monospace;
+    color: #000000;
+    background-color: white;
 }
 
 .title {

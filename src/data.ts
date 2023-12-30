@@ -8,7 +8,7 @@ let celestialBodies: any = {
         "numberOfMoons": "0",
         "ringSystem": "No",
         "obliquityToOrbit": "24.4°",
-        "atmosphere": "He, H"
+        "atmosphere": "He, H",
     },
     "mercury": {
         "type": "Planet",
@@ -19,7 +19,7 @@ let celestialBodies: any = {
         "numberOfMoons": "0",
         "ringSystem": "No",
         "obliquityToOrbit": "0.034°",
-        "atmosphere": "None (It has an Exosphere)"
+        "atmosphere": "None (Exosphere)",
     },
     "venus": {
         "type": "Planet",
@@ -41,7 +41,7 @@ let celestialBodies: any = {
         "numberOfMoons": "1",
         "ringSystem": "No",
         "obliquityToOrbit": "23.4°",
-        "atmosphere": "N₂, O₂"
+        "atmosphere": "N₂, O₂",
     },
     "moon": {
         "type": "Moon",
@@ -52,7 +52,7 @@ let celestialBodies: any = {
         "numberOfMoons": "0",
         "ringSystem": "No",
         "obliquityToOrbit": "6.7°",
-        "atmosphere": "None (It has an Exosphere)"
+        "atmosphere": "None (Exosphere)"
     },
     "mars": {
         "type": "Planet",
