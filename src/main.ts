@@ -16,7 +16,7 @@ var neptunebtn = document.querySelector(".neptune")
 var planetname = document.querySelector(".planetname")
 
 if (planetname)
-  planetname.innerHTML = "○ Test gravity here"
+  planetname.innerHTML = "Test gravity here"
 
 var title = document.querySelector(".title")
 var type = document.querySelector(".type")
@@ -24,14 +24,24 @@ var diameter = document.querySelector(".diameter")
 var gravity = document.querySelector(".gravityc")
 var orbitalPeriod = document.querySelector(".orbitalPeriod")
 var meanTemperature = document.querySelector(".meanTemperature")
+var density = document.querySelector(".density")
+var numberOfMoons = document.querySelector(".numberOfMoons")
+var ringSystem = document.querySelector(".ringSystem")
+var obliquityToOrbit = document.querySelector(".obliquityToOrbit")
+var atmosphere = document.querySelector(".atmosphere")
 
 function htmlelements(): void {
   if (title) title.innerHTML = "►" + planet[0].toUpperCase() + planet.slice(1, planet.length)
-  if (type) type.innerHTML = "<b>Type: </b>" + celestialBodies[planet]["type"]
-  if (diameter) diameter.innerHTML = "<b>Diameter: </b>" + celestialBodies[planet]["diameter"]
-  if (gravity) gravity.innerHTML = "<b>Gravity: </b>" + celestialBodies[planet]["gravity"]
-  if (orbitalPeriod) orbitalPeriod.innerHTML = "<b>Period: </b>" + celestialBodies[planet]["orbitalPeriod"]
-  if (meanTemperature) meanTemperature.innerHTML = "<b>Temperature: </b>" + celestialBodies[planet]["meanTemperature"]
+  if (type) type.innerHTML = "<b>> Type: </b>" + celestialBodies[planet]["type"]
+  if (diameter) diameter.innerHTML = "<b>> Diameter: </b>" + celestialBodies[planet]["diameter"]
+  if (gravity) gravity.innerHTML = "<b>> Gravity: </b>" + celestialBodies[planet]["gravity"]
+  if (orbitalPeriod) orbitalPeriod.innerHTML = "<b>> Period: </b>" + celestialBodies[planet]["orbitalPeriod"]
+  if (meanTemperature) meanTemperature.innerHTML = "<b>> Temperature: </b>" + celestialBodies[planet]["meanTemperature"]
+  if (density) density.innerHTML = "<b>> Density: </b>" + celestialBodies[planet]["density"]
+  if (numberOfMoons) numberOfMoons.innerHTML = "<b>> Number of Moons: </b>" + celestialBodies[planet]["numberOfMoons"]
+  if (ringSystem) ringSystem.innerHTML = "<b>> Ring System: </b>" + celestialBodies[planet]["ringSystem"]
+  if (obliquityToOrbit) obliquityToOrbit.innerHTML = "<b>> Obliquity to Orbit: </b>" + celestialBodies[planet]["obliquityToOrbit"]
+  if (atmosphere) atmosphere.innerHTML = "<b>> Atmosphere: </b>" + celestialBodies[planet]["atmosphere"]
 }
 
 var dinosaur = document.querySelector(".dinosaur") as HTMLElement
@@ -87,7 +97,8 @@ const width = window.innerWidth
 const height = window.innerHeight
 
 const renderer = new THREE.WebGLRenderer({
-  canvas: document.getElementById('app') as HTMLCanvasElement
+  canvas: document.getElementById('app') as HTMLCanvasElement,
+  alpha: true
 })
 
 renderer.setSize(width, height)
