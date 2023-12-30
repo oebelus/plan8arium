@@ -32,6 +32,7 @@ body {
     cursor: pointer;
     transition: 0.5s;
     border-radius: 2px;
+    color: #ffffff9c;
 }
 
 .planet:hover {
@@ -55,11 +56,11 @@ body {
 
 .float, .gravity {
     position: absolute;
-    right: 17.5%;
-    bottom: 0.8%;
+    right: 19.5%;
+    bottom: 2%;
     padding: 5px;
     background-color: rgba(255, 255, 255, 0);
-    color: white;
+    color: #ffffff54;
     font-size: 20px;
     z-index: 1;
     border-radius: 50%;
@@ -68,27 +69,27 @@ body {
 }
 
 .float {
-    bottom: 3.6%;
+    bottom: 7%;
 }
 
 .planetname {
     position: absolute;
-    right: 20%;
-    bottom: 2%;
-    background-color: #000000;
+    right: 22.5%;
+    bottom: 3.5%;
+    background-color: #060707;
     padding: 8px 10px 8px 10px;
-    color: rgba(255, 255, 255, 0.74);
+    color: #ffffff9c;
     font-family: monospace;
-    border-radius: 5px;
+    border-radius: 10px;
     font-size: 20px;
-    border: 2px solid rgba(255, 255, 255, 0.63);
+    border: 5px transparent solid;
 }
 
 .card {
     position: absolute;
-    top: 16% !important;
-    right: 20%;
-    color: white;
+    top: 16%;
+    right: 21%;
+    color: #ffffff9c;
 }
 
 .data {
@@ -98,15 +99,15 @@ body {
     gap: 7px;
     font-size: 20px;
     background-color: rgba(2, 0, 0, 0.719);
-    padding: 15px 40px 15px 20px;
-    border: 2px #ffffff54 solid;
+    padding: 30px 40px 30px 50px;
+    border: 5px #ffffff54 solid;
     font-family: monospace;
     background-color: #090a0abd;
 }
 
 .title {
     top: 0;
-    color: white;
+    color: #ffffff9c;
     margin-bottom: 10px;
     font-size: 50px;
     margin-left: 15%;
