@@ -31,7 +31,7 @@ body {
     background-color: #090a0abd;
     cursor: pointer;
     transition: 0.5s;
-    border-radius: 5px;
+    border-radius: 2px;
 }
 
 .planet:hover {
@@ -55,12 +55,12 @@ body {
 
 .float, .gravity {
     position: absolute;
-    right: 18%;
-    bottom: 1%;
+    right: 16.5%;
+    bottom: 0%;
     padding: 5px;
-    background-color: rgba(255, 255, 255, 0.575);
-    color: black;
-    font-size: 12px;
+    background-color: rgba(255, 255, 255, 0);
+    color: white;
+    font-size: 20px;
     z-index: 1;
     border-radius: 50%;
     cursor: pointer;
@@ -68,7 +68,7 @@ body {
 }
 
 .float {
-    bottom: 6%;
+    bottom: 3%;
 }
 
 .planetname {
@@ -77,11 +77,11 @@ body {
     bottom: 1%;
     background-color: #000000;
     padding: 8px 10px 8px 10px;
-    color: rgba(255, 255, 255, 0.651);
+    color: rgba(255, 255, 255, 0.74);
     font-family: monospace;
-    border-radius: 10px;
+    border-radius: 5px;
     font-size: 20px;
-    border: 2px solid rgba(255, 255, 255, 0.219);
+    border: 2px solid rgba(255, 255, 255, 0.63);
 }
 
 .card {
@@ -95,11 +95,11 @@ body {
 .data {
     display: flex;
     flex-direction: column;
-    border-radius: 30px;
+    border-radius: 5px;
     gap: 7px;
     font-size: 20px;
     background-color: rgba(2, 0, 0, 0.719);
-    padding: 15px 40px 15px 20px;
+    padding: 30px 40px 30px 40px;
     border: 2px rgba(255, 255, 255, 0.315) solid;
     font-family: monospace;
 }
