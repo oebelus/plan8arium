@@ -16,7 +16,7 @@ var neptunebtn = document.querySelector(".neptune")
 var planetname = document.querySelector(".planetname")
 
 if (planetname)
-  planetname.innerHTML = "Test gravity here"
+  planetname.innerHTML = "> Make the astronaut fall/float"
 
 var title = document.querySelector(".title")
 var type = document.querySelector(".type")
