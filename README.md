@@ -3,4 +3,4 @@ Trying out Three.js to render 3D rotating celestial objects with their correspon
 ### The magic used: 
 Vite, Typescript, Three.js, HTML/CSS, canvas
 ### A screenshot
-![Earth](earth.png)
+![Earth](planet.png)
