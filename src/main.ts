@@ -29,7 +29,6 @@ var numberOfMoons = document.querySelector(".numberOfMoons")
 var ringSystem = document.querySelector(".ringSystem")
 var obliquityToOrbit = document.querySelector(".obliquityToOrbit")
 var atmosphere = document.querySelector(".atmosphere")
-var fact = document.querySelector(".fact")
 
 function htmlelements(): void {
   if (title) title.innerHTML = "►" + planet[0].toUpperCase() + planet.slice(1, planet.length)
@@ -43,7 +42,6 @@ function htmlelements(): void {
   if (ringSystem) ringSystem.innerHTML = "<b>> Ring System: </b>" + celestialBodies[planet]["ringSystem"]
   if (obliquityToOrbit) obliquityToOrbit.innerHTML = "<b>> Obliquity to Orbit: </b>" + celestialBodies[planet]["obliquityToOrbit"]
   if (atmosphere) atmosphere.innerHTML = "<b>> Atmosphere: </b>" + celestialBodies[planet]["atmosphere"]
-  if (fact) fact.innerHTML = celestialBodies[planet]["fact"]
 }
 
 var dinosaur = document.querySelector(".dinosaur") as HTMLElement
