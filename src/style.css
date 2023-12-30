@@ -99,10 +99,9 @@ body {
     font-size: 20px;
     background-color: rgba(2, 0, 0, 0.719);
     padding: 15px 40px 15px 20px;
-    border: 2px rgba(255, 255, 255, 0.315) solid;
+    border: 2px #ffffff54 solid;
     font-family: monospace;
-    color: #000000;
-    background-color: white;
+    background-color: #090a0abd;
 }
 
 .title {
