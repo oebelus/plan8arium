@@ -1,3 +1,3 @@
 # Plan8tarium (Planetarium)
-Trying out threejs to render 3D rotating celestial objects
+Trying out Three.js to render 3D rotating celestial objects<br>
 ![earth](earth.png)
